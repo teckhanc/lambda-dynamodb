@@ -1,0 +1,39 @@
+service: lambda-dynamodb-service
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  region: us-east-1
+
+functions:
+  createUser:
+    handler: createUser.handler
+    events:
+      - http:
+          path: users
+          method: post
+
+  getUser:
+    handler: getUser.handler
+    events:
+      - http:
+          path: users
+          method: get
+          request:
+            parameters:
+              querystrings:
+                userId: true
+
+resources:
+  Resources:
+    UsersTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: Users
+        AttributeDefinitions:
+          - AttributeName: userId
+            AttributeType: S
+        KeySchema:
+          - AttributeName: userId
+            KeyType: HASH
+        BillingMode: PAY_PER_REQUEST
