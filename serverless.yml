@@ -2,8 +2,8 @@ service: lambda-dynamodb-service
 
 provider:
   name: aws
-  runtime: nodejs14.x
-  region: us-east-1
+  runtime: nodejs18.x  # Use the latest stable Node.js runtime
+  region: ap-southeast-2  # Set region to Sydney
 
 functions:
   createUser:
