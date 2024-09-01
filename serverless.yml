@@ -5,7 +5,7 @@ provider:
   runtime: nodejs18.x  # Use the desired Node.js version
   region: ap-southeast-2  # Set the AWS region
   deploymentBucket:
-    name: my-custom-deployment-bucket  # Specify your custom bucket name
+    name: teckhanc-cicd-deployment-bucket  # Specify your custom bucket name
     serverSideEncryption: AES256  # Optional: Adds encryption for S3 bucket
 
 functions:
